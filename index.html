@@ -40,7 +40,7 @@
         </div>
 
         <!-- Vouch Section -->
-        <div class="mb-8">
+        <div>
             <div class="flex justify-between items-center mb-2 px-1">
                 <div class="text-xs uppercase tracking-widest text-zinc-500">VOUCH COMMENT</div>
                 <div class="flex gap-x-3">
@@ -67,7 +67,7 @@
     </div>
 
     <script>
-        // ====================== NEW HOOKS ======================
+        // ====================== HOOKS ======================
         const hooks = [
             "this changes everything", "i wish i found this sooner", "i wasn't expecting this",
             "wait until the lights go out", "this is why i bought it", "i finally understand the hype",
@@ -91,7 +91,7 @@
             "this glow is crazy", "the camera doesn't do it justice", "every night looks like this now"
         ];
 
-        // ====================== NEW VOUCH COMMENTS ======================
+        // ====================== VOUCH COMMENTS ======================
         const vouchComments = [
             "need this 😭", "just ordered one", "okay you got me", "added to cart 😭",
             "this is actually sick", "where'd you get this", "link??", "why do i want this so bad",
@@ -143,7 +143,7 @@
         function copy10Vouch() {
             let text = "";
             for (let i = 0; i < 10; i++) {
-                text += getRandom(vouchComments) + "\n\n";
+                text += getRandom(vouchComments) + "\n";   // single newline, no blank lines
             }
             navigator.clipboard.writeText(text.trim());
             showFeedback('10vouch');
@@ -162,6 +162,7 @@
             });
         }
 
+        // Generate first pair on load
         window.onload = () => {
             generateAll();
         };
