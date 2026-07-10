@@ -17,24 +17,23 @@
 
         <h1 class="text-3xl font-semibold text-center mb-8 tracking-tight">Ecom Generator</h1>
 
-        <!-- Generate Buttons -->
-        <div class="grid grid-cols-2 gap-4 mb-10">
-            <button onclick="generateAll()" 
-                    class="bg-white text-zinc-950 font-semibold py-5 rounded-3xl active:scale-95 transition-all flex items-center justify-center gap-x-3 text-lg">
-                <i class="fa-solid fa-sync-alt"></i>
-                <span>New Hook + Vouch</span>
-            </button>
-            
-            <button onclick="copyToClipboard()" 
-                    class="bg-emerald-600 hover:bg-emerald-500 font-semibold py-5 rounded-3xl active:scale-95 transition-all flex items-center justify-center gap-x-3 text-lg">
-                <i class="fa-solid fa-copy"></i>
-                <span>Copy All</span>
-            </button>
-        </div>
+        <!-- Generate Button -->
+        <button onclick="generateAll()" 
+                class="w-full bg-white text-zinc-950 font-semibold py-5 rounded-3xl active:scale-95 transition-all flex items-center justify-center gap-x-3 text-lg mb-10">
+            <i class="fa-solid fa-sync-alt"></i>
+            <span>New Hook + Vouch</span>
+        </button>
 
         <!-- Hook Section -->
         <div class="mb-8">
-            <div class="text-xs uppercase tracking-widest text-zinc-500 mb-2 px-1">HOOK</div>
+            <div class="flex justify-between items-center mb-2 px-1">
+                <div class="text-xs uppercase tracking-widest text-zinc-500">HOOK</div>
+                <button onclick="copyHook()" 
+                        class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-x-1.5">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>COPY</span>
+                </button>
+            </div>
             <div id="hook-output" 
                  class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 min-h-[110px] output-box leading-relaxed">
             </div>
@@ -42,7 +41,14 @@
 
         <!-- Vouch Section -->
         <div>
-            <div class="text-xs uppercase tracking-widest text-zinc-500 mb-2 px-1">VOUCH COMMENT</div>
+            <div class="flex justify-between items-center mb-2 px-1">
+                <div class="text-xs uppercase tracking-widest text-zinc-500">VOUCH COMMENT</div>
+                <button onclick="copyVouch()" 
+                        class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-x-1.5">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>COPY</span>
+                </button>
+            </div>
             <div id="vouch-output" 
                  class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 min-h-[110px] output-box leading-relaxed">
             </div>
@@ -56,7 +62,6 @@
     <script>
         // ====================== HOOKS ======================
         const hooks = [
-            // Curiosity
             "Wait...", "Hold on.", "No way.", "This is real.", "I found this online.", 
             "This caught me off guard.", "Didn't expect this.", "This exists??", 
             "What...", "This is kinda insane.", "Okay, I'm impressed.", 
@@ -64,54 +69,35 @@
             "I couldn't scroll past this.", "Had to see if it was real.", 
             "It actually works.", "I get the hype.", "This is cooler than I thought.",
             "Why is nobody talking about this?", "Wait until you see this.",
-
-            // AirPods
             "Finding my AirPods at 3 AM 👀", "I'd never lose my AirPods again.",
             "Apple should've made this.", "My favorite AirPods accessory.",
             "AirPods owners need this.", "Best AirPods upgrade.", 
             "Small upgrade, huge difference.", "My AirPods finally look different.",
-
-            // Glow / Night
             "Wait until the lights go off.", "Glow check 🌙", "The glow is unreal.",
             "The glow is crazy.", "It glows all night.", "This never gets old.",
-            "Still glowing...", "The glow is so clean.", "Night mode.", "Lights out.",
-
-            // Apple / Value / Reaction
             "Apple should make these.", "Worth every penny.", "I'm obsessed.",
             "This is oddly satisfying.", "I always lose my AirPods.", 
             "Problem solved.", "POV: It's 2 AM.", "Don't miss this.", 
             "Glad I bought one.", "Need.", "Wow.", "Clean.", "Genius.",
-
-            // Lifestyle
-            "Best thing on my desk.", "Favorite gadget.", "This lives on my AirPods.",
-            "Definitely keeping this.", "Love this thing."
+            "Best thing on my desk.", "Favorite gadget.", "Love this thing."
         ];
 
         // ====================== VOUCH COMMENTS ======================
         const vouchComments = [
-            // Product quality
             "Mine came today, it's actually really nice.",
             "Better quality than I expected.",
             "Fits perfectly.",
             "The glow is brighter in person.",
             "Love mine.", "Ordered a second one.",
-
-            // Glow
             "The glow lasts longer than I thought.",
             "It actually helps me find my AirPods at night.",
             "The glow is so satisfying.",
-
-            // Shipping / Gift
             "Mine arrived in 8 days.", "Shipping was pretty quick.",
             "Bought one for my girlfriend.", "Ordered two 😂",
-
-            // General
             "Didn't expect to like this so much.",
             "Low-key my favorite accessory now.",
             "Worth every penny.", "Highly recommend.",
             "10/10.", "I'd buy it again.",
-
-            // Purchase intent
             "I need this.", "Added to cart.", "Instant buy.", 
             "Take my money.", "This is actually cool.", 
             "Buying one tonight."
@@ -130,32 +116,33 @@
 
             document.getElementById('hook-output').textContent = currentHook;
             document.getElementById('vouch-output').textContent = currentVouch;
-
-            // Auto copy the combination
-            const fullText = `${currentHook}\n\n${currentVouch}`;
-            navigator.clipboard.writeText(fullText);
         }
 
-        function copyToClipboard() {
-            if (!currentHook) {
-                generateAll();
-                return;
-            }
-            const fullText = `${currentHook}\n\n${currentVouch}`;
-            navigator.clipboard.writeText(fullText);
-            
-            // Visual feedback
-            const btns = document.querySelectorAll('button');
-            btns.forEach(btn => {
-                if (btn.innerText.includes('Copy')) {
+        function copyHook() {
+            if (!currentHook) return;
+            navigator.clipboard.writeText(currentHook);
+            showCopiedFeedback('hook');
+        }
+
+        function copyVouch() {
+            if (!currentVouch) return;
+            navigator.clipboard.writeText(currentVouch);
+            showCopiedFeedback('vouch');
+        }
+
+        function showCopiedFeedback(section) {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                if ((section === 'hook' && btn.innerText.includes('HOOK')) || 
+                    (section === 'vouch' && btn.innerText.includes('VOUCH'))) {
                     const original = btn.innerHTML;
-                    btn.innerHTML = `<i class="fa-solid fa-check"></i> COPIED!`;
-                    setTimeout(() => { btn.innerHTML = original; }, 1500);
+                    btn.innerHTML = `<i class="fa-solid fa-check"></i> COPIED`;
+                    setTimeout(() => { btn.innerHTML = original; }, 1400);
                 }
             });
         }
 
-        // Generate first one on load
+        // Generate first pair on load
         window.onload = () => {
             generateAll();
         };
