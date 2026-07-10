@@ -17,7 +17,7 @@
 
         <h1 class="text-3xl font-semibold text-center mb-8 tracking-tight">Ecom Generator</h1>
 
-        <!-- Generate Button -->
+        <!-- Main Generate -->
         <button onclick="generateAll()" 
                 class="w-full bg-white text-zinc-950 font-semibold py-5 rounded-3xl active:scale-95 transition-all flex items-center justify-center gap-x-3 text-lg mb-10">
             <i class="fa-solid fa-sync-alt"></i>
@@ -31,7 +31,7 @@
                 <button onclick="copyHook()" 
                         class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-x-1.5">
                     <i class="fa-solid fa-copy"></i>
-                    <span>COPY</span>
+                    <span>COPY HOOK</span>
                 </button>
             </div>
             <div id="hook-output" 
@@ -40,14 +40,21 @@
         </div>
 
         <!-- Vouch Section -->
-        <div>
+        <div class="mb-8">
             <div class="flex justify-between items-center mb-2 px-1">
                 <div class="text-xs uppercase tracking-widest text-zinc-500">VOUCH COMMENT</div>
-                <button onclick="copyVouch()" 
-                        class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-x-1.5">
-                    <i class="fa-solid fa-copy"></i>
-                    <span>COPY</span>
-                </button>
+                <div class="flex gap-x-3">
+                    <button onclick="copyVouch()" 
+                            class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>COPY</span>
+                    </button>
+                    <button onclick="copy10Vouch()" 
+                            class="text-amber-400 hover:text-amber-300 text-sm flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-list"></i>
+                        <span>10 VOUCHES</span>
+                    </button>
+                </div>
             </div>
             <div id="vouch-output" 
                  class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 min-h-[110px] output-box leading-relaxed">
@@ -55,52 +62,55 @@
         </div>
 
         <div class="text-center text-xs text-zinc-500 mt-10">
-            Tap "New Hook + Vouch" for fresh combinations • Fully mobile optimized
+            New Hook + Vouch • Individual copy buttons • Mobile friendly
         </div>
     </div>
 
     <script>
-        // ====================== HOOKS ======================
+        // ====================== NEW HOOKS ======================
         const hooks = [
-            "Wait...", "Hold on.", "No way.", "This is real.", "I found this online.", 
-            "This caught me off guard.", "Didn't expect this.", "This exists??", 
-            "What...", "This is kinda insane.", "Okay, I'm impressed.", 
-            "I had to try this.", "I wasn't expecting much.", 
-            "I couldn't scroll past this.", "Had to see if it was real.", 
-            "It actually works.", "I get the hype.", "This is cooler than I thought.",
-            "Why is nobody talking about this?", "Wait until you see this.",
-            "Finding my AirPods at 3 AM 👀", "I'd never lose my AirPods again.",
-            "Apple should've made this.", "My favorite AirPods accessory.",
-            "AirPods owners need this.", "Best AirPods upgrade.", 
-            "Small upgrade, huge difference.", "My AirPods finally look different.",
-            "Wait until the lights go off.", "Glow check 🌙", "The glow is unreal.",
-            "The glow is crazy.", "It glows all night.", "This never gets old.",
-            "Apple should make these.", "Worth every penny.", "I'm obsessed.",
-            "This is oddly satisfying.", "I always lose my AirPods.", 
-            "Problem solved.", "POV: It's 2 AM.", "Don't miss this.", 
-            "Glad I bought one.", "Need.", "Wow.", "Clean.", "Genius.",
-            "Best thing on my desk.", "Favorite gadget.", "Love this thing."
+            "this changes everything", "i wish i found this sooner", "i wasn't expecting this",
+            "wait until the lights go out", "this is why i bought it", "i finally understand the hype",
+            "i almost didn't buy this", "this is your sign", "one of the coolest things i own",
+            "watch this...", "i can't believe this works", "okay this is actually insane",
+            "i found something cool", "why didn't anyone tell me about this",
+            "i would've bought this years ago", "don't blink", "just watch",
+            "trust me on this one", "this gets me every time", "this is too satisfying",
+            "if you lose your AirPods... watch this", "every AirPods owner needs this",
+            "no more looking for my AirPods", "this solved one annoying problem",
+            "late-night me is thankful for this", "my room is always dark",
+            "if you know, you know", "i got tired of losing them", "finally fixed this problem",
+            "the one accessory i actually use", "this belongs on every AirPods case",
+            "you'll understand in a second", "one tiny upgrade", "i use this every day",
+            "you're gonna want one", "don't miss this", "i would've bought this sooner",
+            "low-key worth it", "this is staying forever", "my favorite purchase this month",
+            "this is actually useful", "one of my best impulse buys", "i don't regret buying this",
+            "this never gets old", "i'm keeping this", "worth every penny", "instant upgrade",
+            "lights off 👀", "glow check", "wait for the glow", "the glow never gets old",
+            "this looks unreal at night", "this is the best part", "it's even brighter in person",
+            "this glow is crazy", "the camera doesn't do it justice", "every night looks like this now"
         ];
 
-        // ====================== VOUCH COMMENTS ======================
+        // ====================== NEW VOUCH COMMENTS ======================
         const vouchComments = [
-            "Mine came today, it's actually really nice.",
-            "Better quality than I expected.",
-            "Fits perfectly.",
-            "The glow is brighter in person.",
-            "Love mine.", "Ordered a second one.",
-            "The glow lasts longer than I thought.",
-            "It actually helps me find my AirPods at night.",
-            "The glow is so satisfying.",
-            "Mine arrived in 8 days.", "Shipping was pretty quick.",
-            "Bought one for my girlfriend.", "Ordered two 😂",
-            "Didn't expect to like this so much.",
-            "Low-key my favorite accessory now.",
-            "Worth every penny.", "Highly recommend.",
-            "10/10.", "I'd buy it again.",
-            "I need this.", "Added to cart.", "Instant buy.", 
-            "Take my money.", "This is actually cool.", 
-            "Buying one tonight."
+            "need this 😭", "just ordered one", "okay you got me", "added to cart 😭",
+            "this is actually sick", "where'd you get this", "link??", "why do i want this so bad",
+            "that's clean", "lowkey need one", "this is fire", "just bought mine",
+            "mine comes tomorrow 🙏", "finally someone posted the link", "ordered 😭",
+            "this is actually useful", "i would've bought this instantly", 
+            "the glow is way better than i expected", "mine arrived today 🔥",
+            "been using mine every day", "lowkey worth it", "fits perfectly",
+            "shipping was faster than i expected", "i got the blue one",
+            "i need the green one too", "this looks so much better in person",
+            "i wasn't expecting the glow to be that bright", "i'm obsessed 😭",
+            "best accessory i've bought", "this convinced me", "take my money",
+            "okay i'm sold", "instant purchase", "i need this in blue",
+            "this scratches my brain", "why is this so satisfying", "now i want one 😂",
+            "i didn't know these existed", "this is genius", "this deserves more views",
+            "can't stop watching this", "i've watched this like 10 times",
+            "this is actually kinda smart", "i love simple stuff like this",
+            "that's a buy from me", "bro 😭", "okayyy", "yup i'm buying one",
+            "that's actually cool", "this is clean af", "i need this immediately"
         ];
 
         let currentHook = "";
@@ -121,20 +131,30 @@
         function copyHook() {
             if (!currentHook) return;
             navigator.clipboard.writeText(currentHook);
-            showCopiedFeedback('hook');
+            showFeedback('hook');
         }
 
         function copyVouch() {
             if (!currentVouch) return;
             navigator.clipboard.writeText(currentVouch);
-            showCopiedFeedback('vouch');
+            showFeedback('vouch');
         }
 
-        function showCopiedFeedback(section) {
+        function copy10Vouch() {
+            let text = "";
+            for (let i = 0; i < 10; i++) {
+                text += getRandom(vouchComments) + "\n\n";
+            }
+            navigator.clipboard.writeText(text.trim());
+            showFeedback('10vouch');
+        }
+
+        function showFeedback(type) {
             const buttons = document.querySelectorAll('button');
             buttons.forEach(btn => {
-                if ((section === 'hook' && btn.innerText.includes('HOOK')) || 
-                    (section === 'vouch' && btn.innerText.includes('VOUCH'))) {
+                if ((type === 'hook' && btn.innerText.includes('HOOK')) ||
+                    (type === 'vouch' && btn.innerText.includes('COPY') && !btn.innerText.includes('10')) ||
+                    (type === '10vouch' && btn.innerText.includes('10'))) {
                     const original = btn.innerHTML;
                     btn.innerHTML = `<i class="fa-solid fa-check"></i> COPIED`;
                     setTimeout(() => { btn.innerHTML = original; }, 1400);
@@ -142,7 +162,6 @@
             });
         }
 
-        // Generate first pair on load
         window.onload = () => {
             generateAll();
         };
