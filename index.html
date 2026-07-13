@@ -67,28 +67,71 @@
     </div>
 
     <script>
-        // ====================== HOOKS ======================
+        // ====================== NEW HOOKS ======================
         const hooks = [
-            "this changes everything", "i wish i found this sooner", "i wasn't expecting this",
-            "wait until the lights go out", "this is why i bought it", "i finally understand the hype",
-            "i almost didn't buy this", "this is your sign", "one of the coolest things i own",
-            "watch this...", "i can't believe this works", "okay this is actually insane",
-            "i found something cool", "why didn't anyone tell me about this",
-            "i would've bought this years ago", "don't blink", "just watch",
-            "trust me on this one", "this gets me every time", "this is too satisfying",
-            "if you lose your AirPods... watch this", "every AirPods owner needs this",
-            "no more looking for my AirPods", "this solved one annoying problem",
-            "late-night me is thankful for this", "my room is always dark",
-            "if you know, you know", "i got tired of losing them", "finally fixed this problem",
-            "the one accessory i actually use", "this belongs on every AirPods case",
-            "you'll understand in a second", "one tiny upgrade", "i use this every day",
-            "you're gonna want one", "don't miss this", "i would've bought this sooner",
-            "low-key worth it", "this is staying forever", "my favorite purchase this month",
-            "this is actually useful", "one of my best impulse buys", "i don't regret buying this",
-            "this never gets old", "i'm keeping this", "worth every penny", "instant upgrade",
-            "lights off 👀", "glow check", "wait for the glow", "the glow never gets old",
-            "this looks unreal at night", "this is the best part", "it's even brighter in person",
-            "this glow is crazy", "the camera doesn't do it justice", "every night looks like this now"
+            // Curiosity
+            "This changes everything 👀", "I wish I found this sooner 😭", "I wasn’t expecting this 😳",
+            "Wait until the lights go out 🌙", "This is why I bought it ✨", "I finally understand the hype 👀",
+            "I almost didn’t buy this 😅", "This is your sign ✨", "One of the coolest things I own 🔥",
+            "Watch this... 👀", "I can’t believe this works 😳", "Okay, this is actually insane 🤯",
+            "I found something cool 👀", "Why didn’t anyone tell me about this 😭", "I would’ve bought this years ago 💀",
+            "Don’t blink 👀", "Just watch... 🤫", "Trust me on this one 👀", "This gets me every time 😭",
+            "This is too satisfying 😍",
+
+            // Relatable
+            "If you lose your AirPods, watch this 👀", "Every AirPods owner needs this 🎧",
+            "No more looking for my AirPods 😭", "This solved one annoying problem ✅",
+            "Late-night me is thankful for this 🌙", "My room is always dark 💀",
+            "If you know, you know 😭", "I got tired of losing them 🎧", "Finally fixed this problem 🙌",
+            "The one accessory I actually use 👀", "This belongs on every AirPods case 🎧",
+            "You’ll understand in a second 👀", "One tiny upgrade, huge difference ✨",
+            "I use this every day 🔥", "This just makes sense 🤝", "Finding my AirPods at 3 AM 🌙",
+            "Never losing my AirPods again 😭", "AirPods owners will understand this 🎧",
+            "Why are AirPods so easy to lose 💀", "This would’ve saved me so much time 😭",
+
+            // Glow
+            "Lights off... 👀", "Glow check ✨", "Wait for the glow 🌙", "The glow never gets old 😍",
+            "This looks unreal at night 🌙", "This is the best part 👀", "It’s even brighter in person ✨",
+            "This glow is crazy 🤯", "The camera doesn’t do it justice 😭", "Every night looks like this now 🌙",
+            "This is why I love it 💙", "Midnight test 🌙", "Darkness makes it better 👀",
+            "Still glowing... ✨", "I could watch this all day 😍", "Watch what happens in the dark 👀",
+            "The glow is actually insane 🔥", "Night mode activated 🌙", "This looks better with the lights off ✨",
+            "Wait until the room goes dark 😳",
+
+            // AirPods
+            "My AirPods needed this 🎧", "AirPods just got an upgrade ✨", "AirPods but better 👀",
+            "My favorite AirPods accessory 🎧", "This case is actually genius 🤯",
+            "No more boring AirPods cases 😭", "The perfect AirPods upgrade ✨",
+            "Apple should’ve made this 👀", "Why doesn’t Apple sell this 🤔",
+            "This should’ve come in the box 📦", "Apple missed this one 😭",
+            "My AirPods finally look different 🔥", "This makes AirPods look so much better 😍",
+            "This belongs on every pair of AirPods 🎧", "The cleanest AirPods case I’ve seen ✨",
+            "AirPods owners, look at this 👀", "This is staying on my AirPods 🔥",
+            "One of the best AirPods accessories 🎧", "My AirPods glow now 🌙",
+            "This case changes everything 👀",
+
+            // FOMO
+            "You’re gonna want one 👀", "Don’t miss this 🔥", "I would’ve bought this sooner 😭",
+            "Low-key worth it 👀", "This is staying forever ✨", "My favorite purchase this month 😍",
+            "This is actually useful ✅", "One of my best impulse buys 😭", "I don’t regret buying this 🔥",
+            "This never gets old 👀", "I’m keeping this forever 😭", "Worth every penny 💸",
+            "Instant upgrade ✨", "This is a keeper 🔥", "Now I get the hype 👀",
+            "I almost scrolled past this 😳", "You’ll wish you found this earlier 😭",
+            "This sold me instantly 💸", "I didn’t know I needed this 👀", "This might be my best purchase yet 🔥",
+
+            // Question
+            "Would you actually use this? 👀", "Be honest, would you buy this? 🤔",
+            "Worth it or not? 💸", "Keep or skip? 👀", "Yes or no? 🤔",
+            "Rate this from 1–10 🔥", "Cool or unnecessary? 👀", "Is this genius or pointless? 🤔",
+            "Would this help you? 🎧", "Am I the only one who needs this? 😭",
+            "Would you put this on your AirPods? 👀", "Blue or green? 💙💚",
+            "Glow or no glow? ✨", "Would you pay for this? 💸", "Is this the best AirPods case? 🎧",
+
+            // Short
+            "Need this 😭", "So clean ✨", "Actually genius 🤯", "Instant upgrade 🔥",
+            "This glow 😍", "Night mode 🌙", "Worth it? 👀", "AirPods upgrade 🎧",
+            "Problem solved ✅", "Way too satisfying 😭", "Simple but smart 🤝",
+            "Okay, wow 😳", "This is crazy 🤯", "I’m sold 💸", "Finally 🙌"
         ];
 
         // ====================== VOUCH COMMENTS ======================
@@ -143,7 +186,7 @@
         function copy10Vouch() {
             let text = "";
             for (let i = 0; i < 10; i++) {
-                text += getRandom(vouchComments) + "\n";   // single newline, no blank lines
+                text += getRandom(vouchComments) + "\n";
             }
             navigator.clipboard.writeText(text.trim());
             showFeedback('10vouch');
@@ -162,7 +205,6 @@
             });
         }
 
-        // Generate first pair on load
         window.onload = () => {
             generateAll();
         };
