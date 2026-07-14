@@ -3,80 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecom Generator</title>
+    <title>Ecom Generator • Hooks + Vouches</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
         body { font-family: 'Inter', system_ui, sans-serif; }
-        .font-display { font-family: 'Space Grotesk', system_ui, sans-serif; }
-        .box { font-family: 'Inter', system_ui, sans-serif; line-height: 1.75; }
+        .font-display { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; }
+        
+        .section-box {
+            transition: all 0.3s ease;
+        }
+        
+        .generate-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .output-text {
+            font-size: 15.5px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200 min-h-screen pb-12">
     <div class="max-w-xl mx-auto px-4 py-8">
-
         <div class="text-center mb-10">
-            <h1 class="text-4xl font-display tracking-tight">Ecom Generator</h1>
-            <p class="text-zinc-400">Hooks • Single Vouch • 10 Vouches</p>
+            <h1 class="text-4xl font-display tracking-tighter">Ecom Generator</h1>
+            <p class="text-zinc-400 mt-1">Hooks • Single Vouch • 10 Vouches</p>
         </div>
 
-        <!-- Hooks Box -->
-        <div class="mb-8">
-            <div class="flex justify-between items-center mb-3 px-1">
-                <h2 class="font-semibold text-lg">🔥 Hook</h2>
-                <button onclick="remixHook()" 
-                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
+        <!-- Hooks Section -->
+        <div class="section-box mb-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold flex items-center gap-x-2">
+                    <span class="text-violet-400">✦</span> Hook
+                </h2>
+                <button onclick="remixAndCopy('hook')" 
+                        class="flex items-center gap-x-2 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
                     <i class="fa-solid fa-sync-alt"></i>
-                    <span>Remix + Copy</span>
+                    <span>Remix & Copy</span>
                 </button>
             </div>
-            <div id="hook-box" class="box bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-[16px] min-h-[80px]"></div>
+            <div id="hook-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 min-h-[68px] text-zinc-100"></div>
         </div>
 
-        <!-- Single Vouch Box -->
-        <div class="mb-8">
-            <div class="flex justify-between items-center mb-3 px-1">
-                <h2 class="font-semibold text-lg">💬 Single Vouch Comment</h2>
-                <button onclick="remixSingleVouch()" 
-                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
+        <!-- Single Vouch Section -->
+        <div class="section-box mb-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold flex items-center gap-x-2">
+                    <span class="text-emerald-400">✦</span> Single Vouch
+                </h2>
+                <button onclick="remixAndCopy('singleVouch')" 
+                        class="flex items-center gap-x-2 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
                     <i class="fa-solid fa-sync-alt"></i>
-                    <span>Remix + Copy</span>
+                    <span>Remix & Copy</span>
                 </button>
             </div>
-            <div id="single-vouch-box" class="box bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-[16px] min-h-[100px]"></div>
+            <div id="single-vouch-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 min-h-[110px] text-zinc-100"></div>
         </div>
 
-        <!-- 10 Vouches Box -->
-        <div>
-            <div class="flex justify-between items-center mb-3 px-1">
-                <h2 class="font-semibold text-lg">🔁 10 Vouch Comments</h2>
-                <button onclick="remixTenVouches()" 
-                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
+        <!-- 10 Vouches Section -->
+        <div class="section-box bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold flex items-center gap-x-2">
+                    <span class="text-amber-400">✦</span> 10 Vouches
+                </h2>
+                <button onclick="remixAndCopy('tenVouches')" 
+                        class="flex items-center gap-x-2 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
                     <i class="fa-solid fa-sync-alt"></i>
-                    <span>Remix + Copy</span>
+                    <span>Remix & Copy</span>
                 </button>
             </div>
-            <div id="ten-vouches-box" class="box bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-[15px] leading-relaxed whitespace-pre-line"></div>
+            <div id="ten-vouches-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 text-zinc-100 text-sm leading-relaxed"></div>
         </div>
 
+        <div class="text-center mt-10 text-xs text-zinc-500">
+            Tap Remix & Copy to refresh that section and copy to clipboard
+        </div>
     </div>
 
     <script>
-        const hooks = [
+        // ====================== DATA ======================
+        const hooksList = [ /* your hooks here - paste the full list */ 
             "I just wanted protection… now I can’t stop shaking it 😭✨",
             "It glows in the dark BTW 👀🌙",
             "POV: You finally stop losing your AirPods at night 🌌",
             "Daytime cute… nighttime MAGIC ✨🌟",
             "This AirPods case turned into my favorite fidget toy 😍🔥",
             "Why is everyone buying this glowing AirPods case?? 👀✨",
-            "TikTok made me buy it… and I don’t regret it 😭💸",
+            "Made me buy it… and I don’t regret it 😭💸",
             "Wait for the lights to turn off… 🌑✨",
             "The AirPods case that glows brighter than my future 🌟😂",
             "Never lose your pods again (even in bed) 🛏️🌙",
             "Dropping my AirPods in the dark = nightmare. This fixed it 🙌",
             "Normal case vs this glowing quicksand one… 😮✨",
             "Charge it for 30 seconds = hours of glow ⚡🌟",
-            "My AirPods finally have main character energy 💅✨",
+            "My AirPods finally have main character energy ✨",
             "If your case doesn’t do this… you need it ASAP 🔥",
             "POV: Your AirPods glowing like a night light 🌙✨",
             "This case glows so bright I use it as a flashlight 😭🔦",
@@ -87,89 +111,139 @@
             "My new favorite thing about this case 😍🖤",
             "Shake it… now watch it glow ✨🌀",
             "AirPods case glow up of the year 🔥🌌",
-            "If it doesn’t glow, I don’t want it 💅✨",
+            "If it doesn’t glow, I don’t want it ✨",
             "Me at 2am looking for my AirPods… until now 😩🌙",
             "This is why your AirPods case needs an upgrade ASAP 🚀",
             "Cute by day, magical by night ✨🌑",
             "The fidget + glow combo nobody knew they needed 😌🔥",
-            "TikTok lied… this is even better in person 😭💖",
-            "Comment ‘GLOW’ if you need this in your life 👇✨",
-            "Don’t scroll without saving this glowy case 📲🌟",
-            "Your sign to get the glowing AirPods case ✨",
-            "This case makes finding your AirPods too easy 🌙😂",
-            "Glow in the dark quicksand hitting different 🌀😮",
-            "Turning my basic AirPods into a vibe ✨🔥",
-            "Glow so good it’s distracting me from my music 😭🌟",
-            "Real ones know this case hits different at night 🌌",
-            "Normal Apple case vs this glowing one… 😮✨",
-            "Apple gave me this… I upgraded to THIS 🌙🔥",
-            "Daytime basic → Nighttime magic ✨🌌"
+            "This is even better in person 😭💖",
+            "The glow hits different at night 😮🌙",
+            "This quicksand case is dangerously satisfying 🌀✨",
+            "From basic to glowing in seconds 🔥🌟",
+            "You need this glowing case in your life 🙌",
+            "The way the sand moves while glowing is hypnotic 😭🌀",
+            "Best glow I’ve seen on an AirPods case 🌟",
+            "Lights out = instant vibe ✨🌑",
+            "This case makes my AirPods actually fun to use 😍",
+            "Glow so strong it lights up my whole nightstand 🔦🌙",
+            "Normal case who? This one glows ✨",
+            "The perfect mix of cute and useful 😌🌟",
+            "Shaking this case never gets old 🔥🌀",
+            "Finally a case that stands out in the dark 👀",
+            "Glow activation is so satisfying to watch ⚡",
+            "This is what an upgraded AirPods case looks like ✨",
+            "Bright glow + moving sand = obsessed 😭",
+            "No more boring cases after this one 🔥",
+            "The glow lasts way longer than I expected 🙌🌙",
+            "My new go-to AirPods accessory 🌟",
+            "Watch the magic happen when the lights go off ✨🌑"
         ];
 
-        const vouchComments = [
+        const vouchList = [
             "This is actually the best AirPods case I’ve ever owned 😭 The glow is so strong and the quicksand is so satisfying!!",
             "Vouching heavy!! I never lose my pods at night anymore. The glow lasts for hours ✨",
-            "TikTok made me buy it and I’m obsessed 😍 Best purchase of the year!!",
+            "Made me buy it and I’m obsessed 😍 Best purchase of the year!!",
             "The glow is actually insane!! Way brighter than I expected 🌟 10/10 recommend",
             "This case is a game changer. The quicksand movement + glow combo is addicting 🌀",
             "Bought two already 😂 One for me and one as a gift. Everyone needs this!!",
             "Finally a case that’s cute AND functional. Glows bright and protects well 🙌",
             "The way it glows in the dark is actually magical 😭 Best AirPods accessory ever",
             "No more searching in the dark!! This case is a lifesaver 🌙✨",
-            "The fidget factor is real!! I can’t stop shaking it all day lol. Glow is perfect too 🔥",
             "Legit the coolest AirPods case I own. The glow is bright af and the sand moves so smoothly 😍",
-            "Bought it on a whim and now it’s my daily driver. Glow never disappoints ✨",
+            "Vouching!! I never lose my pods at night anymore. Glow lasts for hours ✨",
             "This case made my basic AirPods look expensive 😭 100% vouch!!",
-            "The way it glows in complete darkness is actually impressive 🌙🔥",
+            "The glow is actually insane!! Way brighter than I expected 🌟",
             "Quicksand is so satisfying + it glows?? Instant favorite 😌🌀",
-            "My friends won’t stop asking about it. Best TikTok purchase ever!!",
-            "Glow lasts so long!! Charged it once and it was still glowing the next night 🙌",
-            "Finally something that’s both cute and useful. Love this case so much 💖",
-            "If you have AirPods you NEED this glowing version. Game changer!!",
+            "Bought it yesterday and already in love. Definitely worth it!!",
+            "If you’re thinking about getting it… just do it!! You won’t regret it ✨",
+            "Been using it for a week and the glow still hits every night 🌟",
             "The quality feels premium and the glow effect is chef’s kiss 😘",
-            "Super protective and the glow is a bonus. Best of both worlds 🔥",
-            "This case is actually addictive. Can’t put it down 😭🌟",
+            "Everyone in my house wants one now 😂 Best impulse buy!!",
+            "Real review: glow is strong, case feels premium, and it’s so fun 😭🔥",
+            "Legit the best AirPods case I own. The glow is bright af and the quicksand is so satisfying!!",
+            "This is actually addictive. Can’t put it down 😭🌟",
             "Way better than the plain Apple one. The glow makes it unique!!",
             "Bought the black one and the glow still pops so hard 👀",
             "Perfect for night owls!! Never lose my pods anymore 🌌",
-            "Everyone in my house wants one now 😂 Best impulse buy!!",
-            "Glow is vibrant and the quicksand sparkles even in daylight ✨",
-            "This is what all AirPods cases should be. Obsessed!!",
-            "Real review: glow is strong, case feels premium, and it’s so fun 😭🔥"
+            "The glow + protection combo is unmatched. Apple default who?? 😂",
+            "This case is a lifesaver and looks amazing ✨",
+            "Real one: it actually works as good as the videos show. Vouching!! 🌟"
         ];
 
         function getRandom(arr) {
             return arr[Math.floor(Math.random() * arr.length)];
         }
 
-        function getRandomTen(arr) {
-            let result = [];
-            let shuffled = [...arr].sort(() => 0.5 - Math.random());
-            for (let i = 0; i < 10; i++) {
-                result.push(shuffled[i % shuffled.length]);
+        function getRandomVouches(count) {
+            let selected = [];
+            let temp = [...vouchList];
+            for (let i = 0; i < count; i++) {
+                if (temp.length === 0) temp = [...vouchList];
+                const idx = Math.floor(Math.random() * temp.length);
+                selected.push(temp.splice(idx, 1)[0]);
             }
-            return result.join('\n\n');
+            return selected.join('\n\n');
         }
 
+        // Generate functions
         function remixHook() {
-            const hook = getRandom(hooks);
+            const hook = getRandom(hooksList);
             document.getElementById('hook-box').textContent = hook;
-            navigator.clipboard.writeText(hook);
+            return hook;
         }
 
         function remixSingleVouch() {
-            const vouch = getRandom(vouchComments);
+            const vouch = getRandom(vouchList);
             document.getElementById('single-vouch-box').textContent = vouch;
-            navigator.clipboard.writeText(vouch);
+            return vouch;
         }
 
         function remixTenVouches() {
-            const ten = getRandomTen(vouchComments);
+            const ten = getRandomVouches(10);
             document.getElementById('ten-vouches-box').textContent = ten;
-            navigator.clipboard.writeText(ten);
+            return ten;
         }
 
-        // Load examples on start
+        function remixAndCopy(type) {
+            let content = "";
+
+            if (type === 'hook') {
+                content = remixHook();
+            } else if (type === 'singleVouch') {
+                content = remixSingleVouch();
+            } else if (type === 'tenVouches') {
+                content = remixTenVouches();
+            }
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(content).then(() => {
+                showCopiedFeedback(type);
+            }).catch(() => {
+                // fallback
+                const ta = document.createElement('textarea');
+                ta.value = content;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            });
+        }
+
+        function showCopiedFeedback(type) {
+            // Simple alert for feedback
+            const messages = {
+                hook: "Hook copied!",
+                singleVouch: "Single vouch copied!",
+                tenVouches: "10 vouches copied!"
+            };
+            const el = document.createElement('div');
+            el.className = "fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-6 py-3 rounded-2xl text-sm font-medium shadow-xl z-50";
+            el.textContent = messages[type];
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1400);
+        }
+
+        // Initial load
         window.onload = () => {
             remixHook();
             remixSingleVouch();
