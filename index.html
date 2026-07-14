@@ -25,7 +25,7 @@
             <div class="flex justify-between items-center mb-3 px-1">
                 <h2 class="font-semibold text-lg">🔥 Hook</h2>
                 <button onclick="remixHook()" 
-                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm">
+                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
                     <i class="fa-solid fa-sync-alt"></i>
                     <span>Remix + Copy</span>
                 </button>
@@ -38,7 +38,7 @@
             <div class="flex justify-between items-center mb-3 px-1">
                 <h2 class="font-semibold text-lg">💬 Single Vouch Comment</h2>
                 <button onclick="remixSingleVouch()" 
-                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm">
+                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
                     <i class="fa-solid fa-sync-alt"></i>
                     <span>Remix + Copy</span>
                 </button>
@@ -51,7 +51,7 @@
             <div class="flex justify-between items-center mb-3 px-1">
                 <h2 class="font-semibold text-lg">🔁 10 Vouch Comments</h2>
                 <button onclick="remixTenVouches()" 
-                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm">
+                        class="flex items-center gap-x-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
                     <i class="fa-solid fa-sync-alt"></i>
                     <span>Remix + Copy</span>
                 </button>
@@ -62,9 +62,81 @@
     </div>
 
     <script>
-        // Paste your full lists here
-        const hooks = [ /* your hooks list */ ];
-        const vouchComments = [ /* your vouch comments list */ ];
+        const hooks = [
+            "I just wanted protection… now I can’t stop shaking it 😭✨",
+            "It glows in the dark BTW 👀🌙",
+            "POV: You finally stop losing your AirPods at night 🌌",
+            "Daytime cute… nighttime MAGIC ✨🌟",
+            "This AirPods case turned into my favorite fidget toy 😍🔥",
+            "Why is everyone buying this glowing AirPods case?? 👀✨",
+            "TikTok made me buy it… and I don’t regret it 😭💸",
+            "Wait for the lights to turn off… 🌑✨",
+            "The AirPods case that glows brighter than my future 🌟😂",
+            "Never lose your pods again (even in bed) 🛏️🌙",
+            "Dropping my AirPods in the dark = nightmare. This fixed it 🙌",
+            "Normal case vs this glowing quicksand one… 😮✨",
+            "Charge it for 30 seconds = hours of glow ⚡🌟",
+            "My AirPods finally have main character energy 💅✨",
+            "If your case doesn’t do this… you need it ASAP 🔥",
+            "POV: Your AirPods glowing like a night light 🌙✨",
+            "This case glows so bright I use it as a flashlight 😭🔦",
+            "Quicksand + glow = instant addiction 🌀🌟",
+            "Watch what happens when I turn the lights off… 👀🌑",
+            "No more losing my pods in the dark thanks to this ✨🙌",
+            "The glow is actually insane… wait for it 😱🌟",
+            "My new favorite thing about this case 😍🖤",
+            "Shake it… now watch it glow ✨🌀",
+            "AirPods case glow up of the year 🔥🌌",
+            "If it doesn’t glow, I don’t want it 💅✨",
+            "Me at 2am looking for my AirPods… until now 😩🌙",
+            "This is why your AirPods case needs an upgrade ASAP 🚀",
+            "Cute by day, magical by night ✨🌑",
+            "The fidget + glow combo nobody knew they needed 😌🔥",
+            "TikTok lied… this is even better in person 😭💖",
+            "Comment ‘GLOW’ if you need this in your life 👇✨",
+            "Don’t scroll without saving this glowy case 📲🌟",
+            "Your sign to get the glowing AirPods case ✨",
+            "This case makes finding your AirPods too easy 🌙😂",
+            "Glow in the dark quicksand hitting different 🌀😮",
+            "Turning my basic AirPods into a vibe ✨🔥",
+            "Glow so good it’s distracting me from my music 😭🌟",
+            "Real ones know this case hits different at night 🌌",
+            "Normal Apple case vs this glowing one… 😮✨",
+            "Apple gave me this… I upgraded to THIS 🌙🔥",
+            "Daytime basic → Nighttime magic ✨🌌"
+        ];
+
+        const vouchComments = [
+            "This is actually the best AirPods case I’ve ever owned 😭 The glow is so strong and the quicksand is so satisfying!!",
+            "Vouching heavy!! I never lose my pods at night anymore. The glow lasts for hours ✨",
+            "TikTok made me buy it and I’m obsessed 😍 Best purchase of the year!!",
+            "The glow is actually insane!! Way brighter than I expected 🌟 10/10 recommend",
+            "This case is a game changer. The quicksand movement + glow combo is addicting 🌀",
+            "Bought two already 😂 One for me and one as a gift. Everyone needs this!!",
+            "Finally a case that’s cute AND functional. Glows bright and protects well 🙌",
+            "The way it glows in the dark is actually magical 😭 Best AirPods accessory ever",
+            "No more searching in the dark!! This case is a lifesaver 🌙✨",
+            "The fidget factor is real!! I can’t stop shaking it all day lol. Glow is perfect too 🔥",
+            "Legit the coolest AirPods case I own. The glow is bright af and the sand moves so smoothly 😍",
+            "Bought it on a whim and now it’s my daily driver. Glow never disappoints ✨",
+            "This case made my basic AirPods look expensive 😭 100% vouch!!",
+            "The way it glows in complete darkness is actually impressive 🌙🔥",
+            "Quicksand is so satisfying + it glows?? Instant favorite 😌🌀",
+            "My friends won’t stop asking about it. Best TikTok purchase ever!!",
+            "Glow lasts so long!! Charged it once and it was still glowing the next night 🙌",
+            "Finally something that’s both cute and useful. Love this case so much 💖",
+            "If you have AirPods you NEED this glowing version. Game changer!!",
+            "The quality feels premium and the glow effect is chef’s kiss 😘",
+            "Super protective and the glow is a bonus. Best of both worlds 🔥",
+            "This case is actually addictive. Can’t put it down 😭🌟",
+            "Way better than the plain Apple one. The glow makes it unique!!",
+            "Bought the black one and the glow still pops so hard 👀",
+            "Perfect for night owls!! Never lose my pods anymore 🌌",
+            "Everyone in my house wants one now 😂 Best impulse buy!!",
+            "Glow is vibrant and the quicksand sparkles even in daylight ✨",
+            "This is what all AirPods cases should be. Obsessed!!",
+            "Real review: glow is strong, case feels premium, and it’s so fun 😭🔥"
+        ];
 
         function getRandom(arr) {
             return arr[Math.floor(Math.random() * arr.length)];
@@ -76,7 +148,7 @@
             for (let i = 0; i < 10; i++) {
                 result.push(shuffled[i % shuffled.length]);
             }
-            return result.join('\n');
+            return result.join('\n\n');
         }
 
         function remixHook() {
@@ -97,7 +169,7 @@
             navigator.clipboard.writeText(ten);
         }
 
-        // Initial load
+        // Load examples on start
         window.onload = () => {
             remixHook();
             remixSingleVouch();
