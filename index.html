@@ -3,210 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecom Generator • Hooks + Vouch</title>
+    <title>Ecom Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap');
         body { font-family: 'Inter', system_ui, sans-serif; }
         .output-box { font-size: 15.5px; line-height: 1.75; }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200 min-h-screen pb-12">
-    <div class="max-w-xl mx-auto px-4 py-8">
+    <div class="max-w-xl mx-auto px-5 py-8">
 
-        <h1 class="text-3xl font-semibold text-center mb-8 tracking-tight">Ecom Generator</h1>
+        <h1 class="text-3xl font-bold text-center mb-8">Ecom Generator</h1>
 
-        <!-- Main Generate -->
-        <button onclick="generateAll()" 
-                class="w-full bg-white text-zinc-950 font-semibold py-5 rounded-3xl active:scale-95 transition-all flex items-center justify-center gap-x-3 text-lg mb-10">
-            <i class="fa-solid fa-sync-alt"></i>
-            <span>New Hook + Vouch</span>
-        </button>
-
-        <!-- Hook Section -->
+        <!-- HOOKS BOX -->
         <div class="mb-8">
-            <div class="flex justify-between items-center mb-2 px-1">
-                <div class="text-xs uppercase tracking-widest text-zinc-500">HOOK</div>
-                <button onclick="copyHook()" 
-                        class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-x-1.5">
-                    <i class="fa-solid fa-copy"></i>
-                    <span>COPY HOOK</span>
+            <div class="flex justify-between items-center mb-3 px-1">
+                <h2 class="text-emerald-400 font-semibold">HOOK</h2>
+                <button onclick="remixAndCopy('hook')" 
+                        class="text-xs bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded-2xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-sync-alt"></i> REGENERATE + COPY
                 </button>
             </div>
-            <div id="hook-output" 
-                 class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 min-h-[110px] output-box leading-relaxed">
+            <div id="hook-box" class="output-box bg-zinc-900 border border-zinc-700 rounded-3xl p-6 min-h-[90px]">
             </div>
         </div>
 
-        <!-- Vouch Section -->
+        <!-- SINGLE VOUCH BOX -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-3 px-1">
+                <h2 class="text-sky-400 font-semibold">ONE VOUCH COMMENT</h2>
+                <button onclick="remixAndCopy('single-vouch')" 
+                        class="text-xs bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded-2xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-sync-alt"></i> REGENERATE + COPY
+                </button>
+            </div>
+            <div id="single-vouch-box" class="output-box bg-zinc-900 border border-zinc-700 rounded-3xl p-6 min-h-[70px]">
+            </div>
+        </div>
+
+        <!-- 10 VOUCH COMMENTS BOX -->
         <div>
-            <div class="flex justify-between items-center mb-2 px-1">
-                <div class="text-xs uppercase tracking-widest text-zinc-500">VOUCH COMMENT</div>
-                <div class="flex gap-x-3">
-                    <button onclick="copyVouch()" 
-                            class="text-emerald-400 hover:text-emerald-300 text-sm flex items-center gap-x-1.5">
-                        <i class="fa-solid fa-copy"></i>
-                        <span>COPY</span>
-                    </button>
-                    <button onclick="copy10Vouch()" 
-                            class="text-amber-400 hover:text-amber-300 text-sm flex items-center gap-x-1.5">
-                        <i class="fa-solid fa-list"></i>
-                        <span>10 VOUCHES</span>
-                    </button>
-                </div>
+            <div class="flex justify-between items-center mb-3 px-1">
+                <h2 class="text-violet-400 font-semibold">10 VOUCH COMMENTS</h2>
+                <button onclick="remixAndCopy('ten-vouch')" 
+                        class="text-xs bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded-2xl flex items-center gap-x-2">
+                    <i class="fa-solid fa-sync-alt"></i> REGENERATE + COPY
+                </button>
             </div>
-            <div id="vouch-output" 
-                 class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 min-h-[110px] output-box leading-relaxed">
+            <div id="ten-vouch-box" class="output-box bg-zinc-900 border border-zinc-700 rounded-3xl p-6 whitespace-pre-line leading-relaxed min-h-[280px]">
             </div>
         </div>
 
-        <div class="text-center text-xs text-zinc-500 mt-10">
-            New Hook + Vouch • Individual copy buttons • Mobile friendly
-        </div>
+        <p class="text-center text-xs text-zinc-500 mt-10">Each box works independently</p>
     </div>
 
     <script>
-        // ====================== NEW HOOKS ======================
-        const hooks = [
-            // Curiosity
-            "This changes everything 👀", "I wish I found this sooner 😭", "I wasn’t expecting this 😳",
-            "Wait until the lights go out 🌙", "This is why I bought it ✨", "I finally understand the hype 👀",
-            "I almost didn’t buy this 😅", "This is your sign ✨", "One of the coolest things I own 🔥",
-            "Watch this... 👀", "I can’t believe this works 😳", "Okay, this is actually insane 🤯",
-            "I found something cool 👀", "Why didn’t anyone tell me about this 😭", "I would’ve bought this years ago 💀",
-            "Don’t blink 👀", "Just watch... 🤫", "Trust me on this one 👀", "This gets me every time 😭",
-            "This is too satisfying 😍",
-
-            // Relatable
-            "If you lose your AirPods, watch this 👀", "Every AirPods owner needs this 🎧",
-            "No more looking for my AirPods 😭", "This solved one annoying problem ✅",
-            "Late-night me is thankful for this 🌙", "My room is always dark 💀",
-            "If you know, you know 😭", "I got tired of losing them 🎧", "Finally fixed this problem 🙌",
-            "The one accessory I actually use 👀", "This belongs on every AirPods case 🎧",
-            "You’ll understand in a second 👀", "One tiny upgrade, huge difference ✨",
-            "I use this every day 🔥", "This just makes sense 🤝", "Finding my AirPods at 3 AM 🌙",
-            "Never losing my AirPods again 😭", "AirPods owners will understand this 🎧",
-            "Why are AirPods so easy to lose 💀", "This would’ve saved me so much time 😭",
-
-            // Glow
-            "Lights off... 👀", "Glow check ✨", "Wait for the glow 🌙", "The glow never gets old 😍",
-            "This looks unreal at night 🌙", "This is the best part 👀", "It’s even brighter in person ✨",
-            "This glow is crazy 🤯", "The camera doesn’t do it justice 😭", "Every night looks like this now 🌙",
-            "This is why I love it 💙", "Midnight test 🌙", "Darkness makes it better 👀",
-            "Still glowing... ✨", "I could watch this all day 😍", "Watch what happens in the dark 👀",
-            "The glow is actually insane 🔥", "Night mode activated 🌙", "This looks better with the lights off ✨",
-            "Wait until the room goes dark 😳",
-
-            // AirPods
-            "My AirPods needed this 🎧", "AirPods just got an upgrade ✨", "AirPods but better 👀",
-            "My favorite AirPods accessory 🎧", "This case is actually genius 🤯",
-            "No more boring AirPods cases 😭", "The perfect AirPods upgrade ✨",
-            "Apple should’ve made this 👀", "Why doesn’t Apple sell this 🤔",
-            "This should’ve come in the box 📦", "Apple missed this one 😭",
-            "My AirPods finally look different 🔥", "This makes AirPods look so much better 😍",
-            "This belongs on every pair of AirPods 🎧", "The cleanest AirPods case I’ve seen ✨",
-            "AirPods owners, look at this 👀", "This is staying on my AirPods 🔥",
-            "One of the best AirPods accessories 🎧", "My AirPods glow now 🌙",
-            "This case changes everything 👀",
-
-            // FOMO
-            "You’re gonna want one 👀", "Don’t miss this 🔥", "I would’ve bought this sooner 😭",
-            "Low-key worth it 👀", "This is staying forever ✨", "My favorite purchase this month 😍",
-            "This is actually useful ✅", "One of my best impulse buys 😭", "I don’t regret buying this 🔥",
-            "This never gets old 👀", "I’m keeping this forever 😭", "Worth every penny 💸",
-            "Instant upgrade ✨", "This is a keeper 🔥", "Now I get the hype 👀",
-            "I almost scrolled past this 😳", "You’ll wish you found this earlier 😭",
-            "This sold me instantly 💸", "I didn’t know I needed this 👀", "This might be my best purchase yet 🔥",
-
-            // Question
-            "Would you actually use this? 👀", "Be honest, would you buy this? 🤔",
-            "Worth it or not? 💸", "Keep or skip? 👀", "Yes or no? 🤔",
-            "Rate this from 1–10 🔥", "Cool or unnecessary? 👀", "Is this genius or pointless? 🤔",
-            "Would this help you? 🎧", "Am I the only one who needs this? 😭",
-            "Would you put this on your AirPods? 👀", "Blue or green? 💙💚",
-            "Glow or no glow? ✨", "Would you pay for this? 💸", "Is this the best AirPods case? 🎧",
-
-            // Short
-            "Need this 😭", "So clean ✨", "Actually genius 🤯", "Instant upgrade 🔥",
-            "This glow 😍", "Night mode 🌙", "Worth it? 👀", "AirPods upgrade 🎧",
-            "Problem solved ✅", "Way too satisfying 😭", "Simple but smart 🤝",
-            "Okay, wow 😳", "This is crazy 🤯", "I’m sold 💸", "Finally 🙌"
+        // Your lists
+        const hooks = [ /* paste all your hooks here */ 
+            "I just wanted protection… now I can’t stop shaking it 😭✨",
+            "It glows in the dark BTW 👀🌙",
+            "POV: You finally stop losing your AirPods at night 🌌",
+            "Daytime cute… nighttime MAGIC ✨🌟",
+            "This AirPods case turned into my favorite fidget toy 😍🔥",
+            "Why is everyone buying this glowing AirPods case?? 👀✨",
+            "TikTok made me buy it… and I don’t regret it 😭💸",
+            "Wait for the lights to turn off… 🌑✨",
+            "The AirPods case that glows brighter than my future 🌟😂",
+            "Never lose your pods again (even in bed) 🛏️🌙",
+            "Dropping my AirPods in the dark = nightmare. This fixed it 🙌",
+            "Normal case vs this glowing quicksand one… 😮✨",
+            "Charge it for 30 seconds = hours of glow ⚡🌟",
+            "My AirPods finally have main character energy 💅✨",
+            "If your case doesn’t do this… you need it ASAP 🔥",
+            "POV: Your AirPods glowing like a night light 🌙✨",
+            "This case glows so bright I use it as a flashlight 😭🔦",
+            "Quicksand + glow = instant addiction 🌀🌟",
+            "Watch what happens when I turn the lights off… 👀🌑",
+            "No more losing my pods in the dark thanks to this ✨🙌",
+            "The glow is actually insane… wait for it 😱🌟",
+            "My new favorite thing about this case 😍🖤",
+            "Shake it… now watch it glow ✨🌀",
+            "AirPods case glow up of the year 🔥🌌",
+            "If it doesn’t glow, I don’t want it 💅✨",
+            "Me at 2am looking for my AirPods… until now 😩🌙",
+            "This is why your AirPods case needs an upgrade ASAP 🚀",
+            "Cute by day, magical by night ✨🌑",
+            "The fidget + glow combo nobody knew they needed 😌🔥",
+            "TikTok lied… this is even better in person 😭💖",
+            "Comment ‘GLOW’ if you need this in your life 👇✨",
+            "Don’t scroll without saving this glowy case 📲🌟",
+            "Your sign to get the glowing AirPods case ✨",
+            "This case makes finding your AirPods too easy 🌙😂",
+            "Glow in the dark quicksand hitting different 🌀😮",
+            "Turning my basic AirPods into a vibe ✨🔥",
+            "Glow so good it’s distracting me from my music 😭🌟",
+            "Real ones know this case hits different at night 🌌",
+            "Normal Apple case vs this glowing one… 😮✨",
+            "Apple gave me this… I upgraded to THIS 🌙🔥",
+            "Daytime basic → Nighttime magic ✨🌌"
         ];
 
-        // ====================== VOUCH COMMENTS ======================
-        const vouchComments = [
-            "need this 😭", "just ordered one", "okay you got me", "added to cart 😭",
-            "this is actually sick", "where'd you get this", "link??", "why do i want this so bad",
-            "that's clean", "lowkey need one", "this is fire", "just bought mine",
-            "mine comes tomorrow 🙏", "finally someone posted the link", "ordered 😭",
-            "this is actually useful", "i would've bought this instantly", 
-            "the glow is way better than i expected", "mine arrived today 🔥",
-            "been using mine every day", "lowkey worth it", "fits perfectly",
-            "shipping was faster than i expected", "i got the blue one",
-            "i need the green one too", "this looks so much better in person",
-            "i wasn't expecting the glow to be that bright", "i'm obsessed 😭",
-            "best accessory i've bought", "this convinced me", "take my money",
-            "okay i'm sold", "instant purchase", "i need this in blue",
-            "this scratches my brain", "why is this so satisfying", "now i want one 😂",
-            "i didn't know these existed", "this is genius", "this deserves more views",
-            "can't stop watching this", "i've watched this like 10 times",
-            "this is actually kinda smart", "i love simple stuff like this",
-            "that's a buy from me", "bro 😭", "okayyy", "yup i'm buying one",
-            "that's actually cool", "this is clean af", "i need this immediately"
+        const vouchComments = [ /* paste all your vouch comments here */ 
+            "this case is actually so good 😭 glows bright af",
+            "vouching, the glow is insane",
+            "bought it last night and im obsessed",
+            "no more losing my airpods in bed lmao",
+            "the quicksand is so satisfying fr",
+            "way better than the default apple case",
+            "glow lasts forever omg",
+            "this is my new favorite thing",
+            "tik tok made me buy it and im not mad",
+            "the glow hits different at night 🔥",
+            "definitely worth it",
+            "bought two already",
+            "glow is actually crazy bright",
+            "cant stop shaking it lol",
+            "best airpods case i own",
+            "the sand moving is so cool",
+            "super bright when lights go off",
+            "everyone needs this one",
+            "way cuter in person",
+            "glow dont play around",
+            "this case is legit good",
+            "the glow surprised me ngl",
+            "shaking it all day now",
+            "glow is bright asf",
+            "finally a useful airpods case",
+            "this one hits different",
+            "quicksand makes it fun",
+            "glow works every time",
+            "better than expected fr",
+            "i use it every day",
+            "the glow is so clean",
+            "no more dark searches",
+            "this case is wavy",
+            "obsessed with the movement",
+            "worth every penny",
+            "glow stays on for hours",
+            "my favorite accessory rn",
+            "the sand moving is crazy",
+            "10/10 would buy again",
+            "this case is actually good",
+            "actually obsessed with this case",
+            "glows so bright at night",
+            "best purchase ive made in a while",
+            "the quicksand is addictive af",
+            "no cap this case is fire",
+            "way better than my old one",
+            "cant stop playing with it",
+            "glow dont miss",
+            "this case is different",
+            "bought it and dont regret",
+            "super satisfying to shake",
+            "lights out and it glows crazy",
+            "my pods never get lost now",
+            "this one actually works",
+            "love the glow so much",
+            "def my new daily",
+            "the sand moving is perfect",
+            "actually so cool at night",
+            "this case ate"
         ];
-
-        let currentHook = "";
-        let currentVouch = "";
 
         function getRandom(arr) {
             return arr[Math.floor(Math.random() * arr.length)];
         }
 
-        function generateAll() {
-            currentHook = getRandom(hooks);
-            currentVouch = getRandom(vouchComments);
-
-            document.getElementById('hook-output').textContent = currentHook;
-            document.getElementById('vouch-output').textContent = currentVouch;
-        }
-
-        function copyHook() {
-            if (!currentHook) return;
-            navigator.clipboard.writeText(currentHook);
-            showFeedback('hook');
-        }
-
-        function copyVouch() {
-            if (!currentVouch) return;
-            navigator.clipboard.writeText(currentVouch);
-            showFeedback('vouch');
-        }
-
-        function copy10Vouch() {
-            let text = "";
-            for (let i = 0; i < 10; i++) {
-                text += getRandom(vouchComments) + "\n";
+        function getRandomVouches(count) {
+            let selected = new Set();
+            while (selected.size < count) {
+                selected.add(getRandom(vouchComments));
             }
-            navigator.clipboard.writeText(text.trim());
-            showFeedback('10vouch');
+            return Array.from(selected).join('\n');
         }
 
-        function showFeedback(type) {
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach(btn => {
-                if ((type === 'hook' && btn.innerText.includes('HOOK')) ||
-                    (type === 'vouch' && btn.innerText.includes('COPY') && !btn.innerText.includes('10')) ||
-                    (type === '10vouch' && btn.innerText.includes('10'))) {
-                    const original = btn.innerHTML;
-                    btn.innerHTML = `<i class="fa-solid fa-check"></i> COPIED`;
-                    setTimeout(() => { btn.innerHTML = original; }, 1400);
-                }
+        function generateHook() {
+            document.getElementById('hook-box').textContent = getRandom(hooks);
+        }
+
+        function generateSingleVouch() {
+            document.getElementById('single-vouch-box').textContent = getRandom(vouchComments);
+        }
+
+        function generateTenVouches() {
+            document.getElementById('ten-vouch-box').textContent = getRandomVouches(10);
+        }
+
+        function remixAndCopy(type) {
+            let content = "";
+
+            if (type === 'hook') {
+                generateHook();
+                content = document.getElementById('hook-box').textContent;
+            } else if (type === 'single-vouch') {
+                generateSingleVouch();
+                content = document.getElementById('single-vouch-box').textContent;
+            } else if (type === 'ten-vouch') {
+                generateTenVouches();
+                content = document.getElementById('ten-vouch-box').textContent;
+            }
+
+            navigator.clipboard.writeText(content).then(() => {
+                // Optional: show brief feedback
             });
         }
 
+        // Initial generation
         window.onload = () => {
-            generateAll();
+            generateHook();
+            generateSingleVouch();
+            generateTenVouches();
         };
     </script>
 </body>
