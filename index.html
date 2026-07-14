@@ -16,13 +16,9 @@
             transition: all 0.3s ease;
         }
         
-        .generate-btn {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
         .output-text {
             font-size: 15.5px;
-            line-height: 1.7;
+            line-height: 1.75;
             white-space: pre-wrap;
         }
     </style>
@@ -80,13 +76,12 @@
         </div>
 
         <div class="text-center mt-10 text-xs text-zinc-500">
-            Tap Remix & Copy to refresh that section and copy to clipboard
+            Tap Remix & Copy to refresh that section + copy to clipboard
         </div>
     </div>
 
     <script>
-        // ====================== DATA ======================
-        const hooksList = [ /* your hooks here - paste the full list */ 
+        const hooksList = [
             "I just wanted protection… now I can’t stop shaking it 😭✨",
             "It glows in the dark BTW 👀🌙",
             "POV: You finally stop losing your AirPods at night 🌌",
@@ -174,18 +169,17 @@
             return arr[Math.floor(Math.random() * arr.length)];
         }
 
-        function getRandomVouches(count) {
+        function getRandomTenVouches() {
             let selected = [];
             let temp = [...vouchList];
-            for (let i = 0; i < count; i++) {
+            for (let i = 0; i < 10; i++) {
                 if (temp.length === 0) temp = [...vouchList];
                 const idx = Math.floor(Math.random() * temp.length);
                 selected.push(temp.splice(idx, 1)[0]);
             }
-            return selected.join('\n\n');
+            return selected.join('\n');
         }
 
-        // Generate functions
         function remixHook() {
             const hook = getRandom(hooksList);
             document.getElementById('hook-box').textContent = hook;
@@ -199,7 +193,7 @@
         }
 
         function remixTenVouches() {
-            const ten = getRandomVouches(10);
+            const ten = getRandomTenVouches();
             document.getElementById('ten-vouches-box').textContent = ten;
             return ten;
         }
@@ -207,19 +201,13 @@
         function remixAndCopy(type) {
             let content = "";
 
-            if (type === 'hook') {
-                content = remixHook();
-            } else if (type === 'singleVouch') {
-                content = remixSingleVouch();
-            } else if (type === 'tenVouches') {
-                content = remixTenVouches();
-            }
+            if (type === 'hook') content = remixHook();
+            else if (type === 'singleVouch') content = remixSingleVouch();
+            else if (type === 'tenVouches') content = remixTenVouches();
 
-            // Copy to clipboard
             navigator.clipboard.writeText(content).then(() => {
                 showCopiedFeedback(type);
             }).catch(() => {
-                // fallback
                 const ta = document.createElement('textarea');
                 ta.value = content;
                 document.body.appendChild(ta);
@@ -230,17 +218,16 @@
         }
 
         function showCopiedFeedback(type) {
-            // Simple alert for feedback
             const messages = {
-                hook: "Hook copied!",
-                singleVouch: "Single vouch copied!",
-                tenVouches: "10 vouches copied!"
+                hook: "✅ Hook copied!",
+                singleVouch: "✅ Single vouch copied!",
+                tenVouches: "✅ 10 vouches copied!"
             };
-            const el = document.createElement('div');
-            el.className = "fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-6 py-3 rounded-2xl text-sm font-medium shadow-xl z-50";
-            el.textContent = messages[type];
-            document.body.appendChild(el);
-            setTimeout(() => el.remove(), 1400);
+            const toast = document.createElement('div');
+            toast.className = "fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-6 py-3 rounded-2xl text-sm font-medium shadow-2xl z-50";
+            toast.textContent = messages[type];
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 1600);
         }
 
         // Initial load
