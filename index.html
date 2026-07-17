@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecom Generator • Hooks + Vouches</title>
+    <title>Ecom Generator • Hooks + Vouches + Captions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -27,7 +27,7 @@
     <div class="max-w-xl mx-auto px-4 py-8">
         <div class="text-center mb-10">
             <h1 class="text-4xl font-display tracking-tighter">Ecom Generator</h1>
-            <p class="text-zinc-400 mt-1">Hooks • Single Vouch • 10 Vouches</p>
+            <p class="text-zinc-400 mt-1">Hooks • Single Vouch • 10 Vouches • Captions</p>
         </div>
 
         <!-- Hooks Section -->
@@ -61,7 +61,7 @@
         </div>
 
         <!-- 10 Vouches Section -->
-        <div class="section-box bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+        <div class="section-box mb-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-semibold flex items-center gap-x-2">
                     <span class="text-amber-400">✦</span> 10 Vouches
@@ -73,6 +73,21 @@
                 </button>
             </div>
             <div id="ten-vouches-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 text-zinc-100 text-sm leading-relaxed"></div>
+        </div>
+
+        <!-- Captions Section -->
+        <div class="section-box bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold flex items-center gap-x-2">
+                    <span class="text-sky-400">✦</span> Caption
+                </h2>
+                <button onclick="remixAndCopy('caption')" 
+                        class="flex items-center gap-x-2 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
+                    <i class="fa-solid fa-sync-alt"></i>
+                    <span>Remix & Copy</span>
+                </button>
+            </div>
+            <div id="caption-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 min-h-[68px] text-zinc-100"></div>
         </div>
 
         <div class="text-center mt-10 text-xs text-zinc-500">
@@ -135,7 +150,7 @@
             "Watch the magic happen when the lights go off ✨🌑"
         ];
 
-        // ====================== UPDATED VOUCHES ======================
+        // ====================== VOUCHES ======================
         const vouchList = [
             "this case is actually so good omg the glow is bright af and i cant stop playing with the sand 😭",
             "vouching!! never lose my airpods at night anymore fr the glow lasts forever",
@@ -157,6 +172,50 @@
             "love how it glows at night so easy to find my pods now no more stress",
             "quicksand + glow combo is perfect i be playing with it nonstop",
             "just wanted a normal case but this glowing one way better than expected 😭"
+        ];
+
+        // ====================== CAPTIONS ======================
+        const captionList = [
+            "This glowing AirPods case is unreal in complete darkness ✨ shopzylk.com",
+            "Never lose your pods at night again thanks to this glow 🌙 shopzylk.com",
+            "Quicksand + strong glow = pure addiction 🌀 shopzylk.com",
+            "The glow actually hits different in the dark 😮 shopzylk.com",
+            "No more searching for your AirPods in bed 🌙 shopzylk.com",
+            "Shake it and watch it glow in complete darkness ✨ shopzylk.com",
+            "Quick charge = hours of bright glow ⚡ shopzylk.com",
+            "Lights out and the magic appears 🌑 shopzylk.com",
+            "My new favorite glowing AirPods case 🔥 shopzylk.com",
+            "This case makes your AirPods glow like crazy 😍 shopzylk.com",
+            "The most satisfying glow in the dark 🌀 shopzylk.com",
+            "Finally a case you can actually see at night 🌙 shopzylk.com",
+            "Glow so bright it lights up everything around it ✨ shopzylk.com",
+            "This glowing quicksand case is dangerously addictive 😭 shopzylk.com",
+            "Turn off the lights and watch the magic happen 🌑 shopzylk.com",
+            "Best AirPods upgrade for night owls 🌙 shopzylk.com",
+            "The glow is actually this strong in total darkness 😱 shopzylk.com",
+            "Obsessed with how this case glows ✨ shopzylk.com",
+            "No more losing your AirPods in the dark 🔥 shopzylk.com",
+            "Pure glow vibes in complete darkness 🌟 shopzylk.com",
+            "This glowing AirPods case lights up the dark like magic ✨ shopzylk.com",
+            "Real glow in complete darkness 🌙 shopzylk.com",
+            "The quicksand glow is actually addictive 🌀 shopzylk.com",
+            "Watch it glow bright in total darkness 😮 shopzylk.com",
+            "My AirPods never get lost at night anymore 🌙 shopzylk.com",
+            "Pure glowing vibes in the dark ✨ shopzylk.com",
+            "This case glows stronger than expected 🔥 shopzylk.com",
+            "Shake and glow in complete darkness 🌀 shopzylk.com",
+            "The best glowing AirPods case hands down 😍 shopzylk.com",
+            "Lights off = instant glow show 🌑 shopzylk.com",
+            "Obsessed with how bright this glow is 🌟 shopzylk.com",
+            "No more blind searching thanks to this ✨ shopzylk.com",
+            "The glow is actually this strong 😱 shopzylk.com",
+            "Satisfying glow + moving sand in the dark 🌀 shopzylk.com",
+            "This AirPods case was made for the night 🌙 shopzylk.com",
+            "Glow so good it feels illegal ✨ shopzylk.com",
+            "Complete darkness but the case still pops 🔥 shopzylk.com",
+            "My favorite nighttime AirPods essential 😭 shopzylk.com",
+            "Real glow that actually works in the dark 🌟 shopzylk.com",
+            "This glowing case changed the game for me ✨ shopzylk.com"
         ];
 
         function getRandom(arr) {
@@ -192,12 +251,19 @@
             return ten;
         }
 
+        function remixCaption() {
+            const caption = getRandom(captionList);
+            document.getElementById('caption-box').textContent = caption;
+            return caption;
+        }
+
         function remixAndCopy(type) {
             let content = "";
 
             if (type === 'hook') content = remixHook();
             else if (type === 'singleVouch') content = remixSingleVouch();
             else if (type === 'tenVouches') content = remixTenVouches();
+            else if (type === 'caption') content = remixCaption();
 
             navigator.clipboard.writeText(content).then(() => {
                 showCopiedFeedback(type);
@@ -215,7 +281,8 @@
             const messages = {
                 hook: "✅ Hook copied!",
                 singleVouch: "✅ Single vouch copied!",
-                tenVouches: "✅ 10 vouches copied!"
+                tenVouches: "✅ 10 vouches copied!",
+                caption: "✅ Caption copied!"
             };
             const toast = document.createElement('div');
             toast.className = "fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-6 py-3 rounded-2xl text-sm font-medium shadow-2xl z-50";
@@ -229,6 +296,7 @@
             remixHook();
             remixSingleVouch();
             remixTenVouches();
+            remixCaption();
         };
     </script>
 </body>
