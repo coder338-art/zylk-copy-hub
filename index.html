@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecom Generator • Hooks + Vouches + Captions</title>
+    <title>Ecom Generator • Hook + Caption + Vouches</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -27,10 +27,10 @@
     <div class="max-w-xl mx-auto px-4 py-8">
         <div class="text-center mb-10">
             <h1 class="text-4xl font-display tracking-tighter">Ecom Generator</h1>
-            <p class="text-zinc-400 mt-1">Hooks • Single Vouch • 10 Vouches • Captions</p>
+            <p class="text-zinc-400 mt-1">Hook • Caption • Single Vouch • 10 Vouches</p>
         </div>
 
-        <!-- Hooks Section -->
+        <!-- 1. Hook -->
         <div class="section-box mb-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-semibold flex items-center gap-x-2">
@@ -45,7 +45,22 @@
             <div id="hook-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 min-h-[68px] text-zinc-100"></div>
         </div>
 
-        <!-- Single Vouch Section -->
+        <!-- 2. Caption -->
+        <div class="section-box mb-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold flex items-center gap-x-2">
+                    <span class="text-sky-400">✦</span> Caption
+                </h2>
+                <button onclick="remixAndCopy('caption')" 
+                        class="flex items-center gap-x-2 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
+                    <i class="fa-solid fa-sync-alt"></i>
+                    <span>Remix & Copy</span>
+                </button>
+            </div>
+            <div id="caption-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 min-h-[68px] text-zinc-100"></div>
+        </div>
+
+        <!-- 3. Single Vouch -->
         <div class="section-box mb-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-semibold flex items-center gap-x-2">
@@ -60,8 +75,8 @@
             <div id="single-vouch-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 min-h-[110px] text-zinc-100"></div>
         </div>
 
-        <!-- 10 Vouches Section -->
-        <div class="section-box mb-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+        <!-- 4. 10 Vouches -->
+        <div class="section-box bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-semibold flex items-center gap-x-2">
                     <span class="text-amber-400">✦</span> 10 Vouches
@@ -73,21 +88,6 @@
                 </button>
             </div>
             <div id="ten-vouches-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 text-zinc-100 text-sm leading-relaxed"></div>
-        </div>
-
-        <!-- Captions Section -->
-        <div class="section-box bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-semibold flex items-center gap-x-2">
-                    <span class="text-sky-400">✦</span> Caption
-                </h2>
-                <button onclick="remixAndCopy('caption')" 
-                        class="flex items-center gap-x-2 px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-medium">
-                    <i class="fa-solid fa-sync-alt"></i>
-                    <span>Remix & Copy</span>
-                </button>
-            </div>
-            <div id="caption-box" class="output-text bg-zinc-950 border border-zinc-800 rounded-2xl p-5 min-h-[68px] text-zinc-100"></div>
         </div>
 
         <div class="text-center mt-10 text-xs text-zinc-500">
@@ -239,6 +239,12 @@
             return hook;
         }
 
+        function remixCaption() {
+            const caption = getRandom(captionList);
+            document.getElementById('caption-box').textContent = caption;
+            return caption;
+        }
+
         function remixSingleVouch() {
             const vouch = getRandom(vouchList);
             document.getElementById('single-vouch-box').textContent = vouch;
@@ -251,19 +257,13 @@
             return ten;
         }
 
-        function remixCaption() {
-            const caption = getRandom(captionList);
-            document.getElementById('caption-box').textContent = caption;
-            return caption;
-        }
-
         function remixAndCopy(type) {
             let content = "";
 
             if (type === 'hook') content = remixHook();
+            else if (type === 'caption') content = remixCaption();
             else if (type === 'singleVouch') content = remixSingleVouch();
             else if (type === 'tenVouches') content = remixTenVouches();
-            else if (type === 'caption') content = remixCaption();
 
             navigator.clipboard.writeText(content).then(() => {
                 showCopiedFeedback(type);
@@ -280,9 +280,9 @@
         function showCopiedFeedback(type) {
             const messages = {
                 hook: "✅ Hook copied!",
+                caption: "✅ Caption copied!",
                 singleVouch: "✅ Single vouch copied!",
-                tenVouches: "✅ 10 vouches copied!",
-                caption: "✅ Caption copied!"
+                tenVouches: "✅ 10 vouches copied!"
             };
             const toast = document.createElement('div');
             toast.className = "fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-6 py-3 rounded-2xl text-sm font-medium shadow-2xl z-50";
@@ -294,9 +294,9 @@
         // Initial load
         window.onload = () => {
             remixHook();
+            remixCaption();
             remixSingleVouch();
             remixTenVouches();
-            remixCaption();
         };
     </script>
 </body>
